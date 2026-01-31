@@ -3,187 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zetasscore — Terminal</title>
+<title>Zetasscore</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-    font-family: "JetBrains Mono", Consolas, monospace;
-  }
+* {
+  box-sizing: border-box;
+  font-family: Consolas, monospace;
+}
 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #0b0f14, #020409);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00ffcc;
-    overflow: hidden;
-    padding: 16px;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b0f14, #020409);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ffcc;
+  overflow: hidden;
+  padding: 16px;
+}
 
-  /* BACKGROUND GLOW */
-  .glow {
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    background: #00ffcc;
-    filter: blur(160px);
-    opacity: 0.15;
-    animation: float 10s infinite alternate ease-in-out;
-  }
+/* TERMINAL */
+.terminal {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(5, 10, 15, 0.9);
+  border-radius: 14px;
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.35);
+  overflow: hidden;
+}
 
-  .glow.purple {
-    background: #7f00ff;
-    top: 65%;
-    left: 60%;
-    animation-duration: 12s;
-  }
+.header {
+  background: #0c1220;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  /* TERMINAL */
-  .terminal {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    background: rgba(5, 10, 15, 0.9);
-    border-radius: 14px;
-    box-shadow: 0 0 40px rgba(0, 255, 200, 0.35);
-    overflow: hidden;
-    animation: fadeUp 1.2s ease;
-  }
+.dots {
+  display: flex;
+  gap: 6px;
+}
 
-  .terminal::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 14px;
-    background: linear-gradient(45deg, #00ffcc, #7f00ff);
-    filter: blur(16px);
-    opacity: 0.6;
-    z-index: -1;
-  }
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
 
-  /* HEADER */
-  .terminal-header {
-    background: #0c1220;
-    padding: 10px 12px;
-    display: flex;
-    gap: 8px;
-  }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
 
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-  }
+/* SOUND BUTTON */
+.sound-btn {
+  background: transparent;
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
 
-  .red { background: #ff5f56; }
-  .yellow { background: #ffbd2e; }
-  .green { background: #27c93f; }
+.sound-btn.active {
+  background: #00ffcc;
+  color: #000;
+}
 
-  /* BODY */
-  .terminal-body {
-    padding: 18px;
-    font-size: 14px;
-    line-height: 1.6;
-  }
+.body {
+  padding: 18px;
+  font-size: 14px;
+}
 
-  .line {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 6px;
-  }
+.line {
+  display: flex;
+  gap: 6px;
+}
 
-  .prompt {
-    color: #7fffd4;
-  }
+.prompt {
+  color: #7fffd4;
+}
 
-  .cursor {
-    display: inline-block;
-    width: 8px;
-    background: #00ffcc;
-    margin-left: 2px;
-    animation: blink 1s infinite;
-  }
+.cursor {
+  display: inline-block;
+  width: 8px;
+  background: #00ffcc;
+  animation: blink 1s infinite;
+}
 
-  .output {
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(0,255,200,0.6);
-    margin-bottom: 10px;
-  }
+.output {
+  color: #fff;
+  margin-top: 8px;
+  text-shadow: 0 0 8px rgba(0,255,200,0.6);
+}
 
-  /* ANIMATIONS */
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes float {
-    from { transform: translate(-40px, -40px); }
-    to { transform: translate(40px, 40px); }
-  }
-
-  /* RESPONSIVE HP */
-  @media (max-width: 480px) {
-    .terminal-body {
-      font-size: 13px;
-      padding: 14px;
-    }
-  }
+@keyframes blink {
+  50% { opacity: 0; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
-<div class="glow purple"></div>
-
 <div class="terminal">
-  <div class="terminal-header">
-    <div class="dot red"></div>
-    <div class="dot yellow"></div>
-    <div class="dot green"></div>
+  <div class="header">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <button class="sound-btn" id="soundBtn">🔇 Sound</button>
   </div>
 
-  <div class="terminal-body" id="terminal">
+  <div class="body" id="terminal">
     <div class="line">
       <span class="prompt">visitor@web:~$</span>
-      <span id="command"></span><span class="cursor"></span>
+      <span id="cmd"></span><span class="cursor"></span>
     </div>
   </div>
 </div>
 
+<!-- AUDIO (ISI FILE SENDIRI) -->
+<audio id="bgm" loop>
+  <source src="backsound.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-  const commandText = "whoami";
-  const outputText = "zetasscore";
-  const commandEl = document.getElementById("command");
-  const terminal = document.getElementById("terminal");
+const command = "whoami";
+const output = "zetasscore";
+const cmdEl = document.getElementById("cmd");
+const terminal = document.getElementById("terminal");
+const bgm = document.getElementById("bgm");
+const btn = document.getElementById("soundBtn");
 
-  let i = 0;
+let i = 0;
 
-  function typeCommand() {
-    if (i < commandText.length) {
-      commandEl.textContent += commandText.charAt(i);
-      i++;
-      setTimeout(typeCommand, 120);
-    } else {
-      setTimeout(showOutput, 500);
-    }
+function type() {
+  if (i < command.length) {
+    cmdEl.textContent += command[i++];
+    setTimeout(type, 120);
+  } else {
+    setTimeout(() => {
+      const out = document.createElement("div");
+      out.className = "output";
+      out.textContent = output;
+      terminal.appendChild(out);
+    }, 500);
   }
+}
 
-  function showOutput() {
-    const outputLine = document.createElement("div");
-    outputLine.className = "output";
-    outputLine.textContent = outputText;
-    terminal.appendChild(outputLine);
+type();
+
+/* SOUND TOGGLE */
+btn.addEventListener("click", () => {
+  if (bgm.paused) {
+    bgm.play();
+    btn.textContent = "🔊 Sound";
+    btn.classList.add("active");
+  } else {
+    bgm.pause();
+    btn.textContent = "🔇 Sound";
+    btn.classList.remove("active");
   }
-
-  typeCommand();
+});
 </script>
 
 </body>
