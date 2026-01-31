@@ -1,162 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Hacked by zetasscore</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salam Kenal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at top, #1f2933, #0b0f14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      overflow: hidden;
+    }
 
-    <meta name="title" content="Hacked by zetasscore">
-    <meta name="description" content="Ghost Zetass -99">
-    <meta name="keywords" content="hacked, deface, zetasscore">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="60 days">
-    <meta name="author" content="zetasscore">
-    <meta name="theme-color" content="#000">
+    .card {
+      background: rgba(20, 25, 35, 0.85);
+      border-radius: 20px;
+      padding: 40px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      animation: fadeIn 1.5s ease;
+    }
 
-    <meta property="og:image" content="https://l.top4top.io/p_2164uvote1.png">
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #00f5ff, #7f00ff);
+      z-index: -1;
+      filter: blur(15px);
+      opacity: 0.6;
+    }
 
-    <link rel="stylesheet" href="https://bit.ly/2UGCIC5">
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00f5ff, #7f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-    <style>
-        body,
-        a:hover {
-            cursor: url(http://cur.cursors-4u.net/symbols/sym-1/sym46.cur), progress !important;
-        }
+    p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
 
-        center {
-            font-family: Courier, monospace;
-        }
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, #00f5ff, #7f00ff);
+      transition: 0.3s;
+      font-weight: bold;
+    }
 
-        img {
-            opacity: 80%;
-        }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(127, 0, 255, 0.6);
+    }
 
-        red {
-            color: red;
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        #background-video {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
-        }
+    .floating {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: #00f5ff;
+      filter: blur(120px);
+      opacity: 0.15;
+      animation: float 10s infinite alternate ease-in-out;
+    }
 
-        font {
-            text-shadow: #000 0 0 3px;
-            -webkit-font-smoothing: antialiased;
-        }
-    </style>
+    .floating.two {
+      background: #7f00ff;
+      top: 70%;
+      left: 60%;
+      animation-duration: 12s;
+    }
 
-    <script>
-        window.onbeforeunload = function () {
-            return "are you sure ? wkwk";
-        };
-
-        function fs() {
-            const elem = document.documentElement;
-
-            if (elem.requestFullscreen) elem.requestFullscreen();
-            else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
-            else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
-            else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
-
-            document.getElementById("body").style.cursor = "none";
-            document.onkeydown = () => false;
-
-            document.addEventListener("keydown", e => {
-                if (e.key === "F11") e.preventDefault();
-            });
-        }
-    </script>
+    @keyframes float {
+      from {
+        transform: translate(-50px, -50px);
+      }
+      to {
+        transform: translate(50px, 50px);
+      }
+    }
+  </style>
 </head>
+<body>
 
-<body
-    id="body"
-    bgcolor="black"
-    text="white"
-    oncontextmenu="return false;"
-    onkeydown="return false;"
-    onmousedown="return false;"
-    onclick="document.getElementById('lagu').play(); fs();"
->
+  <div class="floating"></div>
+  <div class="floating two"></div>
 
-    <audio id="lagu" src="https://b.top4top.io/m_2164iyowq8.mp3" autoplay></audio>
-
-    <video
-        id="background-video"
-        autoplay
-        loop
-        muted
-        poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-    >
-        <source src="https://github.com/anonseven/heker/raw/main/videoplayback.mp4" type="video/mp4">
-    </video>
-
-    <table width="100%" height="80%">
-        <tr>
-            <td>
-                <center>
-                    <small>Ghost Zetass -99</small><br><br>
-
-                    <img
-                        src="https://l.top4top.io/p_2164uvote1.png"
-                        width="220"
-                        height="220"
-                        loading="lazy"
-                        onerror="this.style.display='none';"
-                    >
-
-                    <br><br>
-                    Hacked by <red><i>zetasscore</i></red><br>
-
-                    <font size="2">
-                        Your system isn't as secure as you think.<br>
-                        The vulnerability exists. The risk is real.<br>
-                        Fix it before it's exploited.
-                    </font>
-
-                    <br><br>
-
-                    <small>
-                        <font size="1" color="gray">
-                            <a href="/cdn-cgi/l/email-protection"
-                               class="__cf_email__"
-                               data-cfemail="cba0b9fabbbfa3fba58bbbb9a4bfa4a5e5a6ae">
-                                [contact&nbsp;zetasscore]
-                            </a>
-                        </font>
-                    </small>
-
-                    <div class="footer-greetings">
-                        <marquee>
-                            <font size="2">
-                                <b>Greetz</b> : I Don't Have Team (;
-                            </font>
-                        </marquee>
-                    </div>
-                </center>
-            </td>
-        </tr>
-    </table>
-
-    <script
-        defer
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        crossorigin="anonymous"
-        data-cf-beacon='{"version":"2024.11.0","token":"235c3f92613f41f4879c7661e18d63cd","r":1}'
-    ></script>
-
-    <script
-        data-cfasync="false"
-        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script>
+  <div class="card">
+    <h1>Salam Kenal 👋</h1>
+    <p>Website sederhana dengan UI dark modern dan animasi keren.</p>
+    <a href="#" class="btn">Mulai</a>
+  </div>
 
 </body>
 </html>
