@@ -3,120 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perkenalan Diri | GitHub Profile</title>
+    <title>Hacking Toolkit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Reset dan Base Styles */
+        /* Reset & Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary-color: #24292e;
-            --secondary-color: #0366d6;
-            --accent-color: #28a745;
-            --light-color: #f6f8fa;
-            --dark-color: #1f2328;
-            --text-color: #24292e;
-            --text-light: #586069;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #00ff00;
+            --primary-dark: #00cc00;
+            --secondary: #ff0000;
+            --accent: #0088ff;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --terminal: #0f0;
+            --terminal-bg: rgba(0, 20, 0, 0.9);
+            --matrix: #00ff41;
+            --hacker-red: #ff0033;
+            --hacker-purple: #9900ff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(0, 255, 0, 0.2);
+            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--darker);
+            color: var(--primary);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            padding-bottom: 2rem;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 0, 0.05) 0%, transparent 20%);
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
 
         section {
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
 
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            color: var(--dark-color);
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         h1 {
-            font-size: 2.8rem;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1:after {
+            content: '_';
+            animation: blink 1s infinite;
         }
 
         h2 {
-            font-size: 2.2rem;
-            position: relative;
+            font-size: 2.5rem;
+            color: var(--terminal);
+            border-bottom: 2px solid var(--primary);
             padding-bottom: 0.5rem;
         }
 
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
-        }
-
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--hacker-purple);
         }
 
         p {
-            margin-bottom: 1.2rem;
-            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            color: #ccc;
         }
 
-        a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            transition: var(--transition);
+        .highlight {
+            color: var(--terminal);
+            font-weight: 700;
         }
 
-        a:hover {
-            color: var(--accent-color);
+        .danger {
+            color: var(--secondary);
+            text-shadow: 0 0 5px var(--secondary);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            color: white;
+        .warning {
+            color: #ff9900;
         }
 
         /* Header & Navigation */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--primary);
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
         nav {
@@ -126,230 +136,542 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: var(--neon-glow);
         }
 
-        .logo span {
-            color: var(--accent-color);
+        .logo-icon {
+            color: var(--secondary);
+            animation: pulse 2s infinite;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2rem;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--primary);
+            text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--accent-color);
+            color: var(--terminal);
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        .nav-links a:hover:before {
+            left: 0;
         }
 
         .menu-toggle {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            color: var(--primary);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
-            color: white;
-            text-align: center;
-            padding: 6rem 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            color: #c9d1d9;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--secondary-color);
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        /* About Section */
-        .about-content {
+        .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .skills {
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .tagline {
+            color: var(--hacker-purple);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tagline:before {
+            content: '>>>';
+            color: var(--primary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .skill-tag {
-            background-color: #e7f3ff;
-            color: var(--secondary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, var(--secondary), #cc0000);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        }
+
+        .terminal-container {
+            background: var(--terminal-bg);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+            height: 400px;
+        }
+
+        .terminal-header {
+            background: rgba(0, 20, 0, 0.9);
+            padding: 0.8rem 1.5rem;
+            border-bottom: 1px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: var(--secondary); }
+        .dot.yellow { background: #ffcc00; }
+        .dot.green { background: var(--primary); }
+
+        .terminal-title {
+            margin-left: auto;
+            color: var(--primary);
             font-size: 0.9rem;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .terminal-prompt {
+            color: var(--accent);
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .terminal-output {
+            color: var(--terminal);
+            word-break: break-all;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: var(--terminal);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tool-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+
+        .tool-card:hover:before {
+            left: 100%;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 1rem;
+            color: var(--terminal);
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1.5rem 0;
+        }
+
+        .tool-tag {
+            background: rgba(0, 255, 0, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        /* Projects Section */
-        .projects {
-            background-color: #f8f9fa;
+        .tool-tag.red {
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--secondary);
         }
 
-        .project-grid {
+        .tool-tag.blue {
+            background: rgba(0, 136, 255, 0.1);
+            color: var(--accent);
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Scanner Section */
+        .scanner-container {
+            background: rgba(5, 5, 5, 0.9);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .scanner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .scanner-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary);
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-indicator.active {
+            background: var(--primary);
+        }
+
+        .scanner-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .scanner-output {
+            background: rgba(0, 10, 0, 0.9);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 1.5rem;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .scan-line {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .scan-line:before {
+            content: '>';
+            color: var(--primary);
+        }
+
+        .scan-line.found {
+            color: var(--terminal);
+        }
+
+        .scan-line.vulnerable {
+            color: var(--secondary);
+        }
+
+        .scan-line.secure {
+            color: var(--accent);
+        }
+
+        /* Password Cracker */
+        .cracker-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .cracker-input {
+            background: rgba(5, 5, 5, 0.9);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .cracker-output {
+            background: rgba(5, 5, 5, 0.9);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .hash-display {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            word-break: break-all;
+            margin: 1rem 0;
+            min-height: 100px;
+        }
+
+        .progress-container {
+            margin: 2rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Network Tools */
+        .network-tools {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .project-card {
-            background-color: white;
+        .network-tool {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .project-content {
             padding: 1.5rem;
         }
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
+        .network-tool h4 {
+            color: var(--terminal);
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 10px;
         }
 
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #e7f3ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
+        .ip-display {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 20, 0, 0.9);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            color: var(--terminal);
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
+        /* Footer & Disclaimer */
         footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            background: rgba(5, 5, 5, 0.95);
+            border-top: 1px solid var(--primary);
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .disclaimer {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .disclaimer h3 {
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
 
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+        /* Animations */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        .footer-logo span {
-            color: var(--accent-color);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content, .contact-content {
+        @keyframes matrix {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .hero-content, .cracker-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
             }
             
             h1 {
-                font-size: 2.4rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
+                font-size: 3rem;
             }
         }
 
@@ -360,15 +682,18 @@
             
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: 0;
                 width: 100%;
-                background-color: var(--primary-color);
+                background: rgba(5, 5, 5, 0.98);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
-                padding: 1rem 0;
+                padding: 2rem 0;
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
                 transition: var(--transition);
+                border-top: 1px solid var(--primary);
+                border-bottom: 1px solid var(--primary);
             }
             
             .nav-links.active {
@@ -379,683 +704,56 @@
                 margin: 1rem 0;
             }
             
-            section {
-                padding: 3rem 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.7rem;
-            }
-            
-            .hero {
-                padding: 4rem 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">GitHub<span>Profile</span></a>
-                <div class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang Saya</a></li>
-                    <li><a href="#projects">Proyek</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <img src="https://avatars.githubusercontent.com/u/583231?v=4" alt="Foto Profil" class="profile-img">
-            <h1>Halo, Saya <span style="color: var(--accent-color)">zetasscore</span></h1>
-            <p>Saya seorang pengembang perangkat lunak dengan passion dalam menciptakan solusi digital yang inovatif. Saat ini fokus pada pengembangan web dan mobile applications.</p>
-            <a href="#projects" class="btn">Lihat Proyek Saya</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>Tentang Saya</h2>
-            <div class="about-content">
-                <div>
-                    <p>Saya adalah seorang developer yang bersemangat dalam memecahkan masalah melalui kode. Saya memiliki pengalaman lebih dari 3 tahun dalam pengembangan aplikasi web menggunakan teknologi modern seperti React, Node.js, dan berbagai framework lainnya.</p>
-                    <p>Saya percaya bahwa teknologi yang baik adalah teknologi yang dapat membantu menyelesaikan masalah nyata dengan cara yang efisien dan mudah dipahami.</p>
-                    <p>Di waktu luang, saya senang berkontribusi ke proyek open source, menulis artikel teknis, dan terus belajar teknologi baru.</p>
-                    <div class="skills">
-                        <h3>Keterampilan Teknis</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">AWS</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3>Pengalaman</h3>
-                    <div style="margin-top: 1.5rem;">
-                        <div style="margin-bottom: 2rem;">
-                            <h4>Full Stack Developer</h4>
-                            <p style="color: var(--secondary-color); font-weight: 500;">Tech Solutions Inc. | 2021 - Sekarang</p>
-                            <p>Mengembangkan dan memelihara aplikasi web dengan React di frontend dan Node.js di backend. Bertanggung jawab atas integrasi API dan optimasi performa.</p>
-                        </div>
-                        <div>
-                            <h4>Web Developer</h4>
-                            <p style="color: var(--secondary-color); font-weight: 500;">Digital Agency XYZ | 2019 - 2021</p>
-                            <p>Membuat website responsif untuk berbagai klien menggunakan HTML, CSS, JavaScript, dan CMS seperti WordPress. Juga mengelola deployment dan maintenance.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Proyek Terbaru</h2>
-            <p>Berikut adalah beberapa proyek yang telah saya kerjakan:</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="E-commerce Platform" class="project-img">
-                    <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>Platform e-commerce lengkap dengan sistem pembayaran, manajemen produk, dan dashboard admin.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> Kode</a>
-                            <a href="#" class="btn" style="background-color: var(--accent-color)">Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Task Management App" class="project-img">
-                    <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>Aplikasi manajemen tugas dengan fitur kolaborasi tim, pelacakan progress, dan notifikasi real-time.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> Kode</a>
-                            <a href="#" class="btn" style="background-color: var(--accent-color)">Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Weather Dashboard" class="project-img">
-                    <div class="project-content">
-                        <h3>Weather Dashboard</h3>
-                        <p>Dashboard cuaca dengan prediksi 7 hari ke depan, peta interaktif, dan notifikasi cuaca ekstrem.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> Kode</a>
-                            <a href="#" class="btn" style="background-color: var(--accent-color)">Demo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Hubungi Saya</h2>
-            <div class="contact-content">
-                <div>
-                    <p>Jika Anda tertarik untuk berkolaborasi atau sekedar ingin berdiskusi tentang teknologi, jangan ragu untuk menghubungi saya!</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>ihwalmaulana09@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Lokasi</h4>
-                                <p>Riau, Indonesia</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Telepon</h4>
-                                <p>+628988098238</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3>Kirim Pesan</h3>
-                    <form id="contactForm" style="margin-top: 1.5rem;">
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Nama</label>
-                            <input type="text" id="name" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;" required>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
-                            <input type="email" id="email" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;" required>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Pesan</label>
-                            <textarea id="message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">GitHub<span>Profile</span></div>
-                <p>&copy; 2023 Zetasscore. Semua hak dilindungi.</p>
-                <p style="font-size: 0.9rem; color: #c9d1d9;">Dibuat dengan ❤️ untuk komunitas GitHub</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Toggle menu untuk mobile
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Tutup menu saat link diklik (untuk mobile)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Dalam implementasi nyata, di sini akan ada kode untuk mengirim data ke server
-            // Untuk contoh ini, kita hanya akan menampilkan alert
-            alert('Terima kasih! Pesan Anda telah dikirim. Saya akan membalas secepatnya.');
-            this.reset();
-        });
-        
-        // Smooth scrolling untuk anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySe<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perkenalan Diri | GitHub Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Reset dan Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #24292e;
-            --secondary-color: #0366d6;
-            --accent-color: #28a745;
-            --light-color: #f6f8fa;
-            --dark-color: #1f2328;
-            --text-color: #24292e;
-            --text-light: #586069;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        body {
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            padding-bottom: 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: 4rem 0;
-        }
-
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            color: var(--text-light);
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-color);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            color: white;
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
-            color: white;
-            text-align: center;
-            padding: 6rem 0;
-        }
-
-        .hero h1 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            color: #c9d1d9;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--secondary-color);
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .skills {
-            margin-top: 2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .skill-tag {
-            background-color: #e7f3ff;
-            color: var(--secondary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        .projects {
-            background-color: #f8f9fa;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #e7f3ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .footer-logo span {
-            color: var(--accent-color);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content, .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            h1 {
-                font-size: 2.4rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-color);
+            .cta-buttons {
                 flex-direction: column;
-                align-items: center;
-                padding: 1rem 0;
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                transition: var(--transition);
+                align-items: flex-start;
             }
             
-            .nav-links.active {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-            
-            .nav-links li {
-                margin: 1rem 0;
-            }
-            
-            section {
-                padding: 3rem 0;
+            .tools-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 576px) {
-            .project-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 1.5rem;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             h2 {
-                font-size: 1.7rem;
+                font-size: 2rem;
             }
             
-            .hero {
-                padding: 4rem 0;
+            section {
+                padding: 2rem 0;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Matrix Background Effect -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">GitHub<span>Profile</span></a>
+                <a href="#" class="logo">
+                    <i class="fas fa-skull-crossbones logo-icon"></i>
+                    HACKTOOL
+                </a>
                 <div class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang Saya</a></li>
-                    <li><a href="#projects">Proyek</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#scanner">Scanner</a></li>
+                    <li><a href="#cracker">Password Cracker</a></li>
+                    <li><a href="#network">Network Tools</a></li>
                 </ul>
             </nav>
         </div>
@@ -1064,50 +762,49 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <img src="https://avatars.githubusercontent.com/u/583231?v=4" alt="Foto Profil" class="profile-img">
-            <h1>Halo, Saya <span style="color: var(--accent-color)">Nama Anda</span></h1>
-            <p>Saya seorang pengembang perangkat lunak dengan passion dalam menciptakan solusi digital yang inovatif. Saat ini fokus pada pengembangan web dan mobile applications.</p>
-            <a href="#projects" class="btn">Lihat Proyek Saya</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>Tentang Saya</h2>
-            <div class="about-content">
-                <div>
-                    <p>Saya adalah seorang developer yang bersemangat dalam memecahkan masalah melalui kode. Saya memiliki pengalaman lebih dari 3 tahun dalam pengembangan aplikasi web menggunakan teknologi modern seperti React, Node.js, dan berbagai framework lainnya.</p>
-                    <p>Saya percaya bahwa teknologi yang baik adalah teknologi yang dapat membantu menyelesaikan masalah nyata dengan cara yang efisien dan mudah dipahami.</p>
-                    <p>Di waktu luang, saya senang berkontribusi ke proyek open source, menulis artikel teknis, dan terus belajar teknologi baru.</p>
-                    <div class="skills">
-                        <h3>Keterampilan Teknis</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">AWS</span>
-                        </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>HACKING TOOLKIT</h1>
+                    <div class="tagline">Penetration Testing & Security Analysis Platform</div>
+                    <p>Koleksi lengkap alat keamanan siber untuk penetration testing, vulnerability assessment, dan analisis keamanan jaringan. Digunakan hanya untuk tujuan edukasi dan pengujian legal.</p>
+                    <div class="cta-buttons">
+                        <a href="#tools" class="btn btn-primary">
+                            <i class="fas fa-tools"></i> Explore Tools
+                        </a>
+                        <a href="#disclaimer" class="btn btn-secondary">
+                            <i class="fas fa-exclamation-triangle"></i> Disclaimer
+                        </a>
                     </div>
                 </div>
-                <div>
-                    <h3>Pengalaman</h3>
-                    <div style="margin-top: 1.5rem;">
-                        <div style="margin-bottom: 2rem;">
-                            <h4>Full Stack Developer</h4>
-                            <p style="color: var(--secondary-color); font-weight: 500;">Tech Solutions Inc. | 2021 - Sekarang</p>
-                            <p>Mengembangkan dan memelihara aplikasi web dengan React di frontend dan Node.js di backend. Bertanggung jawab atas integrasi API dan optimasi performa.</p>
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
                         </div>
-                        <div>
-                            <h4>Web Developer</h4>
-                            <p style="color: var(--secondary-color); font-weight: 500;">Digital Agency XYZ | 2019 - 2021</p>
-                            <p>Membuat website responsif untuk berbagai klien menggunakan HTML, CSS, JavaScript, dan CMS seperti WordPress. Juga mengelola deployment dan maintenance.</p>
+                        <div class="terminal-title">root@hacktool:~</div>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-line">
+                            <div class="terminal-prompt">root@hacktool:~#</div>
+                            <div class="terminal-output">systemctl start hacktool</div>
+                        </div>
+                        <div class="terminal-line">
+                            <div class="terminal-output">Initializing hacking toolkit v2.1.4...</div>
+                        </div>
+                        <div class="terminal-line">
+                            <div class="terminal-output">Loading modules: scanner, cracker, analyzer, exploit-db</div>
+                        </div>
+                        <div class="terminal-line">
+                            <div class="terminal-output">Checking dependencies...</div>
+                        </div>
+                        <div class="terminal-line">
+                            <div class="terminal-output" id="statusLine">Status: <span class="highlight">READY</span></div>
+                        </div>
+                        <div class="terminal-line">
+                            <div class="terminal-prompt">root@hacktool:~#</div>
+                            <input type="text" class="terminal-input" id="terminalInput" placeholder="_" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -1115,187 +812,659 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <!-- Tools Section -->
+    <section id="tools">
         <div class="container">
-            <h2>Proyek Terbaru</h2>
-            <p>Berikut adalah beberapa proyek yang telah saya kerjakan:</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="E-commerce Platform" class="project-img">
-                    <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>Platform e-commerce lengkap dengan sistem pembayaran, manajemen produk, dan dashboard admin.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> Kode</a>
-                            <a href="#" class="btn" style="background-color: var(--accent-color)">Demo</a>
-                        </div>
+            <h2>HACKING TOOLS</h2>
+            <p>Pilih alat keamanan sesuai kebutuhan penetration testing Anda:</p>
+            
+            <div class="tools-grid">
+                <!-- Tool 1 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Port Scanner</h3>
+                    <p>Scan port jaringan untuk mengidentifikasi service yang berjalan dan port terbuka.</p>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Network</span>
+                        <span class="tool-tag">Reconnaissance</span>
+                        <span class="tool-tag">Nmap</span>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="startPortScanner()">
+                            <i class="fas fa-play"></i> Start Scan
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToolInfo('port-scanner')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Task Management App" class="project-img">
-                    <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>Aplikasi manajemen tugas dengan fitur kolaborasi tim, pelacakan progress, dan notifikasi real-time.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> Kode</a>
-                            <a href="#" class="btn" style="background-color: var(--accent-color)">Demo</a>
-                        </div>
+
+                <!-- Tool 2 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-unlock-alt"></i>
+                    </div>
+                    <h3>Password Cracker</h3>
+                    <p>Tools brute-force dan dictionary attack untuk menguji kekuatan password.</p>
+                    <div class="tool-tags">
+                        <span class="tool-tag red">Offensive</span>
+                        <span class="tool-tag">Hashcat</span>
+                        <span class="tool-tag">John</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="#cracker" class="btn btn-primary">
+                            <i class="fas fa-key"></i> Open Tool
+                        </a>
+                        <button class="btn btn-secondary" onclick="showToolInfo('password-cracker')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Weather Dashboard" class="project-img">
-                    <div class="project-content">
-                        <h3>Weather Dashboard</h3>
-                        <p>Dashboard cuaca dengan prediksi 7 hari ke depan, peta interaktif, dan notifikasi cuaca ekstrem.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> Kode</a>
-                            <a href="#" class="btn" style="background-color: var(--accent-color)">Demo</a>
-                        </div>
+
+                <!-- Tool 3 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Vulnerability Scanner</h3>
+                    <p>Deteksi celah keamanan dan miskonfigurasi pada sistem target.</p>
+                    <div class="tool-tags">
+                        <span class="tool-tag red">Critical</span>
+                        <span class="tool-tag">Security</span>
+                        <span class="tool-tag">Nessus</span>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="startVulnScan()">
+                            <i class="fas fa-shield-alt"></i> Scan Now
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToolInfo('vuln-scanner')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tool 4 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Packet Sniffer</h3>
+                    <p>Capture dan analisis paket jaringan secara real-time.</p>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Network</span>
+                        <span class="tool-tag">Wireshark</span>
+                        <span class="tool-tag">Monitoring</span>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="startPacketSniffer()">
+                            <i class="fas fa-eye"></i> Start Sniffing
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToolInfo('packet-sniffer')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tool 5 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>SQL Injection</h3>
+                    <p>Tool untuk menguji kerentanan SQL injection pada web aplikasi.</p>
+                    <div class="tool-tags">
+                        <span class="tool-tag red">Web</span>
+                        <span class="tool-tag">Database</span>
+                        <span class="tool-tag">SQLi</span>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="startSqlInjection()">
+                            <i class="fas fa-database"></i> Test SQLi
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToolInfo('sql-injection')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tool 6 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Social Engineering</h3>
+                    <p>Toolkit untuk pengujian social engineering dan phishing simulation.</p>
+                    <div class="tool-tags">
+                        <span class="tool-tag red">Human</span>
+                        <span class="tool-tag">SET</span>
+                        <span class="tool-tag">Phishing</span>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" onclick="startSocialEngineering()">
+                            <i class="fas fa-mask"></i> Launch SET
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToolInfo('social-engineering')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- Vulnerability Scanner -->
+    <section id="scanner">
         <div class="container">
-            <h2>Hubungi Saya</h2>
-            <div class="contact-content">
-                <div>
-                    <p>Jika Anda tertarik untuk berkolaborasi atau sekedar ingin berdiskusi tentang teknologi, jangan ragu untuk menghubungi saya!</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>nama.anda@example.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Lokasi</h4>
-                                <p>Jakarta, Indonesia</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Telepon</h4>
-                                <p>+62 812 3456 7890</p>
-                            </div>
+            <h2>VULNERABILITY SCANNER</h2>
+            <p>Scan target untuk mengidentifikasi celah keamanan dan miskonfigurasi.</p>
+            
+            <div class="scanner-container">
+                <div class="scanner-header">
+                    <div>
+                        <h3>Target Scanner</h3>
+                        <div class="scanner-status">
+                            <div class="status-indicator" id="statusIndicator"></div>
+                            <span id="statusText">Ready to scan</span>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="https://github.com" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                    <div class="scanner-controls">
+                        <input type="text" id="targetInput" class="form-control" placeholder="Enter target IP or URL" style="background: rgba(0,0,0,0.5); color: var(--terminal); border: 1px solid var(--primary); padding: 0.8rem; border-radius: 4px;">
+                        <button class="btn btn-primary" onclick="startScan()">
+                            <i class="fas fa-play"></i> Start Scan
+                        </button>
+                        <button class="btn btn-secondary" onclick="stopScan()">
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <h3>Kirim Pesan</h3>
-                    <form id="contactForm" style="margin-top: 1.5rem;">
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Nama</label>
-                            <input type="text" id="name" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;" required>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
-                            <input type="email" id="email" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;" required>
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Pesan</label>
-                            <textarea id="message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
-                    </form>
+                
+                <div class="scanner-output" id="scannerOutput">
+                    <div class="scan-line">[INFO] Vulnerability Scanner initialized</div>
+                    <div class="scan-line">[INFO] Loading vulnerability database...</div>
+                    <div class="scan-line">[INFO] Ready to accept target</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Password Cracker -->
+    <section id="cracker">
         <div class="container">
+            <h2>PASSWORD CRACKER</h2>
+            <p>Uji kekuatan password dengan berbagai teknik cracking.</p>
+            
+            <div class="cracker-container">
+                <div class="cracker-input">
+                    <h3>Input Hash</h3>
+                    <div class="form-group">
+                        <label for="hashInput">Hash to Crack:</label>
+                        <textarea id="hashInput" class="form-control" placeholder="Paste hash here (MD5, SHA1, SHA256, etc)" rows="3" style="background: rgba(0,0,0,0.5); color: var(--terminal); border: 1px solid var(--primary); padding: 0.8rem; border-radius: 4px; width: 100%; font-family: 'JetBrains Mono', monospace;"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attackType">Attack Type:</label>
+                        <select id="attackType" class="form-control" style="background: rgba(0,0,0,0.5); color: var(--terminal); border: 1px solid var(--primary); padding: 0.8rem; border-radius: 4px; width: 100%;">
+                            <option value="dictionary">Dictionary Attack</option>
+                            <option value="bruteforce">Brute Force</option>
+                            <option value="rainbow">Rainbow Table</option>
+                            <option value="hybrid">Hybrid Attack</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="wordlist">Wordlist:</label>
+                        <select id="wordlist" class="form-control" style="background: rgba(0,0,0,0.5); color: var(--terminal); border: 1px solid var(--primary); padding: 0.8rem; border-radius: 4px; width: 100%;">
+                            <option value="rockyou">rockyou.txt (14M passwords)</option>
+                            <option value="common">Common Passwords (1k)</option>
+                            <option value="custom">Custom Wordlist</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-danger" onclick="startCracking()" style="width: 100%; margin-top: 1.5rem;">
+                        <i class="fas fa-bolt"></i> Start Cracking
+                    </button>
+                </div>
+                
+                <div class="cracker-output">
+                    <h3>Cracking Progress</h3>
+                    <div class="hash-display" id="hashDisplay">
+                        Hash: [Not loaded]
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Progress:</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="crackingStats" style="margin-top: 1.5rem;">
+                        <div>Passwords tried: <span id="triedCount">0</span></div>
+                        <div>Time elapsed: <span id="timeElapsed">0s</span></div>
+                        <div>Status: <span id="crackStatus" class="highlight">Idle</span></div>
+                    </div>
+                    
+                    <div class="hash-display" id="resultDisplay" style="margin-top: 1.5rem; min-height: 60px;">
+                        Result: [Waiting...]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Tools -->
+    <section id="network">
+        <div class="container">
+            <h2>NETWORK TOOLS</h2>
+            <p>Alat untuk analisis dan monitoring jaringan.</p>
+            
+            <div class="network-tools">
+                <div class="network-tool">
+                    <h4><i class="fas fa-wifi"></i> IP Information</h4>
+                    <div class="ip-display" id="ipDisplay">
+                        Loading IP information...
+                    </div>
+                    <button class="btn btn-secondary" onclick="getIPInfo()" style="width: 100%;">
+                        <i class="fas fa-sync-alt"></i> Refresh IP Info
+                    </button>
+                </div>
+                
+                <div class="network-tool">
+                    <h4><i class="fas fa-satellite-dish"></i> Ping Tool</h4>
+                    <div class="form-group">
+                        <input type="text" id="pingTarget" class="form-control" placeholder="Host to ping" style="background: rgba(0,0,0,0.5); color: var(--terminal); border: 1px solid var(--primary); padding: 0.8rem; border-radius: 4px; width: 100%; margin-bottom: 1rem;">
+                        <button class="btn btn-primary" onclick="startPing()" style="width: 100%;">
+                            <i class="fas fa-play"></i> Start Ping
+                        </button>
+                    </div>
+                    <div class="ip-display" id="pingResult" style="min-height: 100px;">
+                        Ping results will appear here
+                    </div>
+                </div>
+                
+                <div class="network-tool">
+                    <h4><i class="fas fa-route"></i> Traceroute</h4>
+                    <div class="form-group">
+                        <input type="text" id="traceTarget" class="form-control" placeholder="Target for traceroute" style="background: rgba(0,0,0,0.5); color: var(--terminal); border: 1px solid var(--primary); padding: 0.8rem; border-radius: 4px; width: 100%; margin-bottom: 1rem;">
+                        <button class="btn btn-primary" onclick="startTraceRoute()" style="width: 100%;">
+                            <i class="fas fa-road"></i> Trace Route
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="network-tool">
+                    <h4><i class="fas fa-shield-alt"></i> Firewall Test</h4>
+                    <p>Test port filtering and firewall rules</p>
+                    <button class="btn btn-danger" onclick="testFirewall()" style="width: 100%; margin-top: 1rem;">
+                        <i class="fas fa-fire"></i> Test Firewall
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Disclaimer -->
+    <footer id="disclaimer">
+        <div class="container">
+            <div class="disclaimer">
+                <h3><i class="fas fa-exclamation-triangle"></i> IMPORTANT DISCLAIMER</h3>
+                <p>Tools ini hanya untuk tujuan EDUKASI dan pengujian keamanan pada sistem yang Anda miliki atau memiliki izin eksplisit untuk diuji. Penggunaan alat ini untuk aktivitas ilegal atau tanpa izin adalah MELANGGAR HUKUM.</p>
+                <p>Penulis tidak bertanggung jawab atas penyalahgunaan alat ini. Gunakan dengan bijak dan bertanggung jawab.</p>
+                <p class="danger">HACKING TANPA IZIN ADALAH KEJAHATAN!</p>
+            </div>
+            
             <div class="footer-content">
-                <div class="footer-logo">GitHub<span>Profile</span></div>
-                <p>&copy; 2023 Nama Anda. Semua hak dilindungi.</p>
-                <p style="font-size: 0.9rem; color: #c9d1d9;">Dibuat dengan ❤️ untuk komunitas GitHub</p>
+                <div>
+                    <div class="logo" style="font-size: 1.8rem;">
+                        <i class="fas fa-skull-crossbones"></i>
+                        HACKTOOL
+                    </div>
+                    <p style="color: var(--gray); margin-top: 0.5rem;">Educational Security Toolkit</p>
+                </div>
+                
+                <div>
+                    <p style="color: var(--gray);">&copy; 2023 Hacking Toolkit - For Educational Purposes Only</p>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Version 2.1.4 | Built with HTML/CSS/JS</p>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Modal for Tool Info -->
+    <div id="toolModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: var(--darker); border: 2px solid var(--primary); border-radius: 8px; padding: 2rem; max-width: 600px; width: 90%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 id="modalTitle">Tool Information</h3>
+                <button onclick="closeModal()" style="background: none; border: none; color: var(--primary); font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div id="modalContent">
+                <p>Tool information will be displayed here.</p>
+            </div>
+            <button class="btn btn-secondary" onclick="closeModal()" style="margin-top: 1.5rem; width: 100%;">Close</button>
+        </div>
+    </div>
+
     <script>
-        // Toggle menu untuk mobile
+        // Matrix Background Effect
+        function createMatrixEffect() {
+            const matrixBg = document.getElementById('matrixBg');
+            const chars = '01';
+            const columns = Math.floor(window.innerWidth / 20);
+            
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.style.position = 'absolute';
+                column.style.top = '-100px';
+                column.style.left = (i * 20) + 'px';
+                column.style.width = '20px';
+                column.style.color = 'var(--matrix)';
+                column.style.fontFamily = 'JetBrains Mono, monospace';
+                column.style.fontSize = '18px';
+                column.style.opacity = '0.7';
+                column.style.animation = `matrix ${Math.random() * 10 + 10}s linear infinite`;
+                column.style.animationDelay = `${Math.random() * 5}s`;
+                
+                let text = '';
+                for (let j = 0; j < 50; j++) {
+                    text += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                column.textContent = text;
+                
+                matrixBg.appendChild(column);
+            }
+        }
+
+        // Terminal Simulation
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalBody = document.getElementById('terminalBody');
+        const statusLine = document.getElementById('statusLine');
+
+        terminalInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim();
+                this.value = '';
+                
+                // Add command to terminal
+                addTerminalLine(`root@hacktool:~# ${command}`);
+                
+                // Process command
+                processCommand(command);
+                
+                // Scroll to bottom
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+
+        function addTerminalLine(text) {
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.innerHTML = `<div class="terminal-output">${text}</div>`;
+            terminalBody.appendChild(line);
+        }
+
+        function processCommand(command) {
+            let output = '';
+            
+            switch(command.toLowerCase()) {
+                case 'help':
+                    output = 'Available commands: scan, crack, info, clear, status, help';
+                    break;
+                case 'scan':
+                    output = 'Starting vulnerability scan... Type "scan --help" for options';
+                    break;
+                case 'crack':
+                    output = 'Password cracker module loaded. Use GUI for better control';
+                    break;
+                case 'clear':
+                    terminalBody.innerHTML = '';
+                    addTerminalLine('Terminal cleared');
+                    return;
+                case 'status':
+                    output = 'System status: ONLINE<br>Tools: READY<br>Database: LOADED';
+                    break;
+                case 'whoami':
+                    output = 'root';
+                    break;
+                case 'ls':
+                    output = 'tools/  scanner/  cracker/  network/  README.md';
+                    break;
+                default:
+                    output = `Command not found: ${command}. Type 'help' for available commands`;
+            }
+            
+            addTerminalLine(output);
+        }
+
+        // Tool Functions
+        function startPortScanner() {
+            addTerminalLine('Starting port scanner...');
+            showAlert('Port Scanner', 'Starting scan on localhost (127.0.0.1)...');
+            
+            // Simulate scanning
+            setTimeout(() => {
+                addTerminalLine('Port scan completed: 22(SSH), 80(HTTP), 443(HTTPS) open');
+                showAlert('Port Scanner', 'Scan completed! Found 3 open ports.');
+            }, 2000);
+        }
+
+        function startVulnScan() {
+            showAlert('Vulnerability Scanner', 'Starting vulnerability assessment...');
+            document.getElementById('statusIndicator').className = 'status-indicator active';
+            document.getElementById('statusText').textContent = 'Scanning in progress...';
+            
+            // Simulate scanning
+            const output = document.getElementById('scannerOutput');
+            output.innerHTML += '<div class="scan-line">[INFO] Starting vulnerability scan...</div>';
+            output.innerHTML += '<div class="scan-line">[SCAN] Checking for open ports...</div>';
+            
+            setTimeout(() => {
+                output.innerHTML += '<div class="scan-line found">[FOUND] Port 22 (SSH) - Open</div>';
+            }, 1000);
+            
+            setTimeout(() => {
+                output.innerHTML += '<div class="scan-line vulnerable">[VULN] Weak SSH configuration detected</div>';
+            }, 2000);
+            
+            setTimeout(() => {
+                output.innerHTML += '<div class="scan-line">[SCAN] Checking web services...</div>';
+            }, 3000);
+            
+            setTimeout(() => {
+                output.innerHTML += '<div class="scan-line vulnerable">[CRITICAL] SQL injection vulnerability found</div>';
+                document.getElementById('statusText').textContent = 'Scan completed - Vulnerabilities found';
+                document.getElementById('statusIndicator').style.background = 'var(--secondary)';
+            }, 4000);
+            
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function startScan() {
+            const target = document.getElementById('targetInput').value || 'localhost';
+            startVulnScan();
+            addTerminalLine(`Starting vulnerability scan on ${target}...`);
+        }
+
+        function stopScan() {
+            document.getElementById('statusIndicator').className = 'status-indicator';
+            document.getElementById('statusText').textContent = 'Scan stopped';
+            showAlert('Scanner', 'Scan stopped by user');
+        }
+
+        // Password Cracker
+        let crackInterval;
+        function startCracking() {
+            const hash = document.getElementById('hashInput').value.trim();
+            if (!hash) {
+                showAlert('Error', 'Please enter a hash to crack');
+                return;
+            }
+            
+            document.getElementById('hashDisplay').textContent = `Hash: ${hash}`;
+            document.getElementById('crackStatus').textContent = 'Cracking...';
+            document.getElementById('crackStatus').className = 'warning';
+            
+            let progress = 0;
+            let tried = 0;
+            let time = 0;
+            
+            crackInterval = setInterval(() => {
+                progress += Math.random() * 5;
+                tried += Math.floor(Math.random() * 1000);
+                time += 1;
+                
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(crackInterval);
+                    document.getElementById('crackStatus').textContent = 'Cracked!';
+                    document.getElementById('crackStatus').className = 'highlight';
+                    document.getElementById('resultDisplay').textContent = 'Result: Password found: "password123"';
+                    showAlert('Success', 'Password cracked successfully: password123');
+                }
+                
+                document.getElementById('progressPercent').textContent = `${Math.min(progress, 100).toFixed(1)}%`;
+                document.getElementById('progressFill').style.width = `${Math.min(progress, 100)}%`;
+                document.getElementById('triedCount').textContent = tried.toLocaleString();
+                document.getElementById('timeElapsed').textContent = `${time}s`;
+            }, 200);
+        }
+
+        // Network Tools
+        function getIPInfo() {
+            const ipDisplay = document.getElementById('ipDisplay');
+            ipDisplay.innerHTML = `
+                Public IP: 192.168.1.100 (Simulated)<br>
+                Location: Local Network<br>
+                ISP: Home Router<br>
+                Hostname: hacktool.local<br>
+                MAC: 00:1A:2B:3C:4D:5E
+            `;
+        }
+
+        function startPing() {
+            const target = document.getElementById('pingTarget').value || 'google.com';
+            const pingResult = document.getElementById('pingResult');
+            
+            pingResult.innerHTML = `Pinging ${target}...<br>`;
+            
+            setTimeout(() => {
+                pingResult.innerHTML += 'Reply from 172.217.0.46: bytes=32 time=25ms TTL=54<br>';
+            }, 500);
+            
+            setTimeout(() => {
+                pingResult.innerHTML += 'Reply from 172.217.0.46: bytes=32 time=27ms TTL=54<br>';
+            }, 1000);
+            
+            setTimeout(() => {
+                pingResult.innerHTML += 'Reply from 172.217.0.46: bytes=32 time=24ms TTL=54<br>';
+            }, 1500);
+            
+            setTimeout(() => {
+                pingResult.innerHTML += 'Reply from 172.217.0.46: bytes=32 time=26ms TTL=54<br><br>';
+                pingResult.innerHTML += 'Ping statistics: 4 sent, 4 received, 0% loss<br>';
+                pingResult.innerHTML += 'Approximate round trip time: 25ms';
+            }, 2000);
+        }
+
+        // Tool Information Modal
+        const toolInfo = {
+            'port-scanner': {
+                title: 'Port Scanner',
+                content: 'Alat untuk memindai port jaringan yang terbuka pada sistem target. Digunakan dalam fase reconnaissance untuk mengidentifikasi service yang berjalan.'
+            },
+            'password-cracker': {
+                title: 'Password Cracker',
+                content: 'Tools untuk menguji kekuatan password dengan teknik dictionary attack, brute force, dan rainbow tables. Hanya gunakan pada sistem yang Anda miliki.'
+            },
+            'vuln-scanner': {
+                title: 'Vulnerability Scanner',
+                content: 'Scanner otomatis untuk mendeteksi celah keamanan seperti SQL injection, XSS, miskonfigurasi, dan kerentanan lainnya.'
+            }
+        };
+
+        function showToolInfo(toolId) {
+            const modal = document.getElementById('toolModal');
+            const info = toolInfo[toolId] || {title: 'Tool Info', content: 'Information not available.'};
+            
+            document.getElementById('modalTitle').textContent = info.title;
+            document.getElementById('modalContent').innerHTML = `<p>${info.content}</p>`;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('toolModal').style.display = 'none';
+        }
+
+        // Utility Functions
+        function showAlert(title, message) {
+            addTerminalLine(`[ALERT] ${title}: ${message}`);
+            
+            // Create alert element
+            const alert = document.createElement('div');
+            alert.style.position = 'fixed';
+            alert.style.top = '20px';
+            alert.style.right = '20px';
+            alert.style.background = 'var(--darker)';
+            alert.style.border = '2px solid var(--primary)';
+            alert.style.borderRadius = '4px';
+            alert.style.padding = '1rem';
+            alert.style.color = 'var(--terminal)';
+            alert.style.zIndex = '3000';
+            alert.style.maxWidth = '300px';
+            alert.style.boxShadow = 'var(--neon-glow)';
+            
+            alert.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
+                    <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                    <strong>${title}</strong>
+                </div>
+                <div>${message}</div>
+            `;
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+
+        // Navigation
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
         });
         
-        // Tutup menu saat link diklik (untuk mobile)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrixEffect();
+            getIPInfo();
             
-            // Dalam implementasi nyata, di sini akan ada kode untuk mengirim data ke server
-            // Untuk contoh ini, kita hanya akan menampilkan alert
-            alert('Terima kasih! Pesan Anda telah dikirim. Saya akan membalas secepatnya.');
-            this.reset();
+            // Simulate terminal startup
+            setTimeout(() => {
+                addTerminalLine('System initialized successfully');
+                addTerminalLine('Type "help" for available commands');
+            }, 1000);
+            
+            // Add blinking cursor to terminal input
+            setInterval(() => {
+                const cursor = terminalInput.placeholder === '_' ? '' : '_';
+                terminalInput.placeholder = cursor;
+            }, 500);
         });
-        
-        // Smooth scrolling untuk anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+
+        // Window resize handler
+        window.addEventListener('resize', function() {
+            document.getElementById('matrixBg').innerHTML = '';
+            createMatrixEffect();
         });
     </script>
 </body>
-</html>lector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-  </html>
+</html>
